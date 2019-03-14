@@ -19,7 +19,7 @@ export class Parrot {
         switch (this.type) {
 
             case PARROT_TYPES.EUROPEAN:
-                return this.getSpeedForEuropean();
+                return new European(this.numberOfCoconuts, this.voltage, this.isNailed).getSpeed();
             case PARROT_TYPES.AFRICAN:
                 return new African(this.numberOfCoconuts, this.voltage, this.isNailed).getSpeed();
             case PARROT_TYPES.NORWEGIAN_BLUE:
@@ -27,15 +27,6 @@ export class Parrot {
         }
         throw new Error("Should be unreachable");
     }
-
-    getSpeedForEuropean() {
-        return this.baseSpeed;
-    }
-
-    getSpeedForAfrican() {
-        return Math.max(0, this.baseSpeed - this.loadFactor * this.numberOfCoconuts);
-    }
-
 
 }
 
@@ -67,5 +58,19 @@ class Norwegian_Blue{
     }
     getBaseSpeedWithVoltage(voltage) {
         return Math.min(24, voltage * this.baseSpeed);
+    }
+}
+
+class European{
+    constructor(numberOfCoconuts, voltage, isNailed) {
+        this.loadFactor = 9;
+        this.baseSpeed = 12;
+        this.numberOfCoconuts = numberOfCoconuts;
+        this.voltage = voltage;
+        this.isNailed = isNailed;
+    }
+
+    getSpeed() {
+        return this.baseSpeed;
     }
 }
