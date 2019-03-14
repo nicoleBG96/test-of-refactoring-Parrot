@@ -30,13 +30,9 @@ export class Parrot {
 
 }
 
-class African {
+class African extends Parrot{
     constructor(numberOfCoconuts, voltage, isNailed) {
-        this.loadFactor = 9;
-        this.baseSpeed = 12;
-        this.numberOfCoconuts = numberOfCoconuts;
-        this.voltage = voltage;
-        this.isNailed = isNailed;
+        super("AFRICAN",numberOfCoconuts, voltage, isNailed);
     }
 
     getSpeed() {
@@ -44,13 +40,9 @@ class African {
     }
 }
 
-class Norwegian_Blue{
+class Norwegian_Blue extends Parrot{
     constructor(numberOfCoconuts, voltage, isNailed) {
-        this.loadFactor = 9;
-        this.baseSpeed = 12;
-        this.numberOfCoconuts = numberOfCoconuts;
-        this.voltage = voltage;
-        this.isNailed = isNailed;
+        super("NORWEGIAN",numberOfCoconuts, voltage, isNailed);
     }
 
     getSpeed() {
@@ -61,13 +53,9 @@ class Norwegian_Blue{
     }
 }
 
-class European{
+class European extends Parrot{
     constructor(numberOfCoconuts, voltage, isNailed) {
-        this.loadFactor = 9;
-        this.baseSpeed = 12;
-        this.numberOfCoconuts = numberOfCoconuts;
-        this.voltage = voltage;
-        this.isNailed = isNailed;
+        super("EUROPEAN",numberOfCoconuts, voltage, isNailed);
     }
 
     getSpeed() {
