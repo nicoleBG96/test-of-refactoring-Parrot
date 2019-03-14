@@ -6,6 +6,8 @@ export const PARROT_TYPES = {
 
 export class Parrot {
     constructor(type, numberOfCoconuts, voltage, isNailed) {
+        this.loadFactor = 9;
+        this.baseSpeed = 12;
 
         this.type = type;
         this.numberOfCoconuts = numberOfCoconuts;
@@ -15,10 +17,11 @@ export class Parrot {
 
     getSpeed() {
         switch (this.type) {
+
             case PARROT_TYPES.EUROPEAN:
                 return this.getSpeedForEuropean();
             case PARROT_TYPES.AFRICAN:
-                return this.getSpeedForAfrican();
+                return new African(this.numberOfCoconuts, this.voltage, this.isNailed).getSpeed();
             case PARROT_TYPES.NORWEGIAN_BLUE:
                 return this.getSpeedForNorwegian();
         }
@@ -26,7 +29,7 @@ export class Parrot {
     }
 
     getSpeedForEuropean() {
-        return this.getBaseSpeed();
+        return this.baseSpeed;
     }
 
     getSpeedForNorwegian() {
@@ -34,30 +37,28 @@ export class Parrot {
     }
 
     getSpeedForAfrican() {
-        return Math.max(0, this.getBaseSpeed() - this.getLoadFactor() * this.numberOfCoconuts);
+        return Math.max(0, this.baseSpeed - this.loadFactor * this.numberOfCoconuts);
     }
 
     getBaseSpeedWithVoltage(voltage) {
-        return Math.min(24, voltage * this.getBaseSpeed());
-    }
-
-    getLoadFactor() {
-        return 9;
-    }
-
-    getBaseSpeed() {
-        return 12;
+        return Math.min(24, voltage * this.baseSpeed);
     }
 }
 
 class African {
     constructor(numberOfCoconuts, voltage, isNailed) {
+        this.loadFactor = 9;
+        this.baseSpeed = 12;
         this.numberOfCoconuts = numberOfCoconuts;
         this.voltage = voltage;
         this.isNailed = isNailed;
     }
 
     getSpeed() {
-        return Math.max(0, this.getBaseSpeed() - this.getLoadFactor() * this.numberOfCoconuts);
+        return Math.max(0, this.baseSpeed - this.loadFactor * this.numberOfCoconuts);
     }
+}
+
+class Norwegian_Blue{
+
 }
